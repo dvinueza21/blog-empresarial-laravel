@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./bootstrap";
 import "../css/app.css";
 
-import Home from "./pages/Home";
+import Home from "@/Pages/Home";
 
 const container = document.getElementById("app");
 
