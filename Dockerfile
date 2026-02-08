@@ -33,14 +33,19 @@ COPY --from=nodebuilder /app/public/build /var/www/html/public/build
 # Instala dependencias PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Permisos para storage/cache
-RUN mkdir -p storage bootstrap/cache \
- && chown -R www-data:www-data storage bootstrap/cache
+# ✅ Crea carpetas necesarias + permisos (CLAVE para evitar "valid cache path")
+RUN mkdir -p \
+    storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache \
+ && chown -R www-data:www-data storage bootstrap/cache \
+ && chmod -R 775 storage bootstrap/cache
 
 # Config Nginx + Supervisor
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/supervisord.conf /etc/supervisord.conf
 
 EXPOSE 8080
-
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

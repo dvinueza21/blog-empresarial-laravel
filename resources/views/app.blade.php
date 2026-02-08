@@ -4,19 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title inertia>{{ config('app.name', 'Blog Empresarial') }}</title>
+    <title>{{ config('app.name', 'Blog Empresarial') }}</title>
 
-    @viteReactRefresh
-    @vite(['resources/js/app.jsx', 'resources/css/app.css'])
-
-    @inertiaHead
+    {{-- Vite (sin React) --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-[#f5f6f7] text-slate-900 antialiased">
-    @inertia
+    @yield('content')
 
     <script>
-      // ✅ Scroll suave real (con easing) SIN depender de anchors
       window.scrollToId = function (id, offset = 90, duration = 1200) {
         const target = document.getElementById(id);
         if (!target) return;
