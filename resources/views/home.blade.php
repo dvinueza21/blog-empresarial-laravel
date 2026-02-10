@@ -252,7 +252,7 @@
             <div class="pt-3 lg:pt-8">
               <button
     type="submit"
-    class="rounded-full bg-slate-900 px-6 py-2.5 text-sm text-white hover:bg-black transition cursor-wait"
+    class="rounded-full bg-slate-900 px-6 py-2.5 text-sm text-white hover:bg-black transition"
     onclick="this.disabled=true; this.innerText='Enviando…'; this.form.submit();"
 >
     Enviar mensaje
