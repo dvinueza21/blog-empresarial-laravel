@@ -250,10 +250,13 @@
             <textarea name="message" placeholder="Mensaje*" rows="4" class="{{ $commonClass }} resize-none" required>{{ old('message') }}</textarea>
 
             <div class="pt-3 lg:pt-8">
-              <button type="submit"
-                class="mx-auto lg:mx-0 inline-flex items-center gap-3 rounded-md bg-slate-900 px-4 py-2 text-[13px] md:text-[16px] font-semibold text-white hover:bg-black transition">
-                Enviar
-              </button>
+              <button
+    type="submit"
+    class="rounded-full bg-slate-900 px-6 py-2.5 text-sm text-white hover:bg-black transition cursor-wait"
+    onclick="this.disabled=true; this.innerText='Enviando…'; this.form.submit();"
+>
+    Enviar mensaje
+</button>
             </div>
           </form>
         </div>
