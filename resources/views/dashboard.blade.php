@@ -21,7 +21,7 @@
                         <div>
                             <p class="text-sm font-semibold text-slate-700">Bienvenid@</p>
                             <h1 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
-                                {{ auth()->user()->name }}
+                                {{ auth()->user()?->name ?? 'Usuario' }}
                             </h1>
                             <p class="mt-2 text-sm md:text-base text-slate-600">
                                 Desde aquí podrás gestionar el blog (artículos, categorías y ajustes).
@@ -74,8 +74,14 @@
                                 Sesión iniciada correctamente.
                             </p>
                             <div class="mt-4 text-sm text-slate-700">
-                                <div><span class="font-semibold">Email:</span> {{ auth()->user()->email }}</div>
-                                <div class="mt-1"><span class="font-semibold">Fecha:</span> {{ now()->format('d/m/Y H:i') }}</div>
+                                <div>
+                                    <span class="font-semibold">Email:</span>
+                                    {{ auth()->user()?->email ?? '' }}
+                                </div>
+                                <div class="mt-1">
+                                    <span class="font-semibold">Fecha:</span>
+                                    {{ now()->format('d/m/Y H:i') }}
+                                </div>
                             </div>
                         </div>
 
